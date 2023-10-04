@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { addTeacher } from './teacherSlice'; // Import your Redux action from the teacherSlice
 
-const AddTeacher = () => {
+  const AddTeacher = () => {
   const navigate = useNavigate();
   const [teacher, setTeacher] = useState({ name: '', subject: '' });
   const dispatch = useDispatch();
@@ -13,16 +13,16 @@ const AddTeacher = () => {
   const handleAddTeacher = () => {
     if (teacher.name.trim() === '' || teacher.subject.trim() === '') return;
 
-    const newTeacher = { ...teacher };
+    // const teacher = { ...teacher };
 
-    axios.post('http://localhost:8060/teacher/addTeacher', newTeacher, {
+    axios.post('http://localhost:8060/teacher/addTeacher', teacher, {
       headers: {
         'Content-Type': 'application/json',
       },
     })
     .then(res => {
-      newTeacher.id = res.data.id;
-      dispatch(addTeacher(newTeacher)); // Dispatch the added teacher to Redux
+      teacher.id = res.data.id;
+      dispatch(addTeacher(teacher)); // Dispatch the added teacher to Redux
       alert("Teacher added Successfully");
       navigate('/'); // Navigate back to the main page
     })

@@ -1,15 +1,4 @@
-import StudentList from "../components/StudentList";
-
-const INITIAL_STATE = {
-    studentsdata:  [
-        { name: 'Harsh Thakur', id: 1, phoneNumber: '6261892774' },
-        { name: 'Piyush Kag ',  id: 2, phoneNumber: '1234567891' },
-        { name: 'Harish Verma', id: 3, phoneNumber: '9876543210' },
-        { name: 'Aarti Goswami',id: 4, phoneNumber: '8675545643' },
-        { name: 'Abhi yadav',   id: 5, phoneNumber: '8587473859' },
-    ],
-   
-  };
+const INITIAL_STATE = [];
   
   function dataReducers(state = INITIAL_STATE, action) {
     switch (action.type) {

@@ -7,6 +7,7 @@ const InstituteManager = () => {
     const [name, setName] = useState('');
     const [subject, setSubject] = useState('');
     const [editingTeacher, setEditingTeacher] = useState({ id: '', name: '', subject: '' });
+    const [selectedTeacherId, setSelectedTeacherId] = useState(null); 
 
     useEffect(() => {
         fetchData();
@@ -47,11 +48,19 @@ const InstituteManager = () => {
             })
             .catch((error) => console.log(error));
     };
+    
+    const handleStudents = (teacher) => {
+        // Set the selected teacher's ID when "Get Students" button is clicked
+        setSelectedTeacherId(teacher.id);
+      };
 
     return (
         <div className='container'>
             <div className='form-div'>
                 <Link to="/add" className="btn btn-sm btn-info">Add Teacher</Link>
+            </div>
+            <div className='form-div'>
+                <Link to="/showAllStudents" className="btn btn-sm btn-info">Show Students</Link>
             </div>
             <table className="table table-striped">
                 <thead>
@@ -96,7 +105,8 @@ const InstituteManager = () => {
                                     </>
                                 ) : (
                                     <>
-                                        <button onClick={() => handleEdit(teacher)} className="btn btn-primary">Edit</button>
+                                            <Link to="/getStudentsByTeacherId" className="btn btn-sm btn-info">Show Students</Link>
+                                            <button onClick={() => handleEdit(teacher)} className="btn btn-primary">Edit</button>
                                         <button onClick={() => handleDelete(teacher.id)} className="btn btn-danger">Delete</button>
                                     </>
                                 )}
